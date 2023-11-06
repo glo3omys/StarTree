@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "report")
 data class ReportEntity(
-    @PrimaryKey val reportId: Int,
-    @ColumnInfo(name = "reportDate") val reportDate: Int,
+    @PrimaryKey(autoGenerate = true) val reportId: Int,
+    @ColumnInfo(name = "reportDate") var reportDate: Int,
     @ColumnInfo(name = "diseaseCode") val diseaseCode: Int,
     @ColumnInfo(name = "imageUri") val imageUri: String,
 )

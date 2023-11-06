@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/startree_launcher"
+        android:icon="@mipmap/startree_launch"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/startree_launcher_round"
+        android:roundIcon="@mipmap/startree_launch_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StarTree"
         tools:targetApi="31">
@@ -21,6 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.PlantUploadActivity" />
+        <activity android:name=".activity.ReportLookupActivity" />
     </application>
 
 </manifest>

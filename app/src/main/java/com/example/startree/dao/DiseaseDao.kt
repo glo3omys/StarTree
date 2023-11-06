@@ -7,12 +7,15 @@ import com.example.startree.entity.DiseaseEntity
 
 @Dao
 interface DiseaseDao {
-    @Query("SELECT * FROM disease")
-    fun getAll(): List<DiseaseEntity>
+    /*@Query("SELECT * FROM disease ORDER BY diseaseCode ASC")
+    fun getAll(): List<DiseaseEntity>*/
+
+    @Query("SELECT * FROM disease WHERE diseaseCode = :diseaseCode")
+    fun getDiseaseById(diseaseCode: Int): DiseaseEntity
 
     /*@Insert
     fun insertAll(vararg users: User)*/
 
-    @Delete
-    fun delete(diseaseEntity: DiseaseEntity)
+    /*@Delete
+    suspend fun deleteDisease(diseaseEntity: DiseaseEntity)*/
 }
