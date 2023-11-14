@@ -8,6 +8,7 @@ import com.example.startree.dao.DiseaseDao
 import com.example.startree.dao.ReportDao
 import com.example.startree.entity.DiseaseEntity
 import com.example.startree.entity.ReportEntity
+import com.google.gson.Gson
 
 @Database(entities = [ReportEntity::class, DiseaseEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {

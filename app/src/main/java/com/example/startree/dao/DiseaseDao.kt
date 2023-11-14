@@ -1,7 +1,8 @@
 package com.example.startree.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.startree.entity.DiseaseEntity
 
@@ -11,7 +12,10 @@ interface DiseaseDao {
     fun getAll(): List<DiseaseEntity>*/
 
     @Query("SELECT * FROM disease WHERE diseaseCode = :diseaseCode")
-    fun getDiseaseById(diseaseCode: Int): DiseaseEntity
+    fun getDiseaseByCode(diseaseCode: Int): DiseaseEntity
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(data: List<DiseaseEntity>)
 
     /*@Insert
     fun insertAll(vararg users: User)*/

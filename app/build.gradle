@@ -5,6 +5,9 @@ plugins {
     // hilt
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+
+    // Parcelable
+    // id 'kotlin-parcelize'
 }
 
 android {
@@ -61,6 +64,17 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
 
+    // ViewModel
+    def lifecycle_version = "2.5.1"
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // ViewModel utilities for Compose
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+
     // Room
     def room_version = "2.5.0"
     implementation "androidx.room:room-runtime:$room_version"
@@ -68,6 +82,12 @@ dependencies {
     // To use Kotlin annotation processing tool (kapt)
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"  // To use Coroutine features
+
+    //implementation 'com.github.bumptech.glide:glide:4.16.0'
+
+    // TedPermission
+    // https://github.com/ParkSangGwon/TedPermission
+    implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0'
 }
 
 kapt {

@@ -5,10 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.startree.databinding.ActivityPlantUploadBinding
+import kotlin.random.Random
 
 class PlantUploadActivity : AppCompatActivity() {
     private var mBinding: ActivityPlantUploadBinding? = null
@@ -16,6 +16,8 @@ class PlantUploadActivity : AppCompatActivity() {
 
     private lateinit var selectImageLauncher: ActivityResultLauncher<Intent>
     private val PICK_IMAGE_REQUEST = 1
+
+    private var selectedImageUri : Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +33,12 @@ class PlantUploadActivity : AppCompatActivity() {
         }
 
         binding.btnGoToRecognition.setOnClickListener {
-
+            // *** CHECK ***
+            val nextIntent = Intent(this, PlantClassificationActivity::class.java)
+            nextIntent.putExtra("imageUri", selectedImageUri)
+            val diseaseCode = Random.nextInt(1, 7)
+            nextIntent.putExtra("diseaseCode", diseaseCode)
+            startActivity(nextIntent)
         }
 
         selectImageLauncher = registerForActivityResult(
@@ -39,7 +46,7 @@ class PlantUploadActivity : AppCompatActivity() {
         ) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val data: Intent? = result.data
-                val selectedImageUri = data?.data
+                selectedImageUri = data?.data
 
                 attachImageToImv(selectedImageUri)
             }

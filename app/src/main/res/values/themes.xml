@@ -3,7 +3,12 @@
     <style name="Base.Theme.StarTree" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!-- 초기 로딩 화면 없애기 -->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="Theme.StarTree" parent="Base.Theme.StarTree" />
+
 </resources>

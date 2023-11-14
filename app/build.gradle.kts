@@ -54,6 +54,8 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 
+    implementation 'com.google.code.gson:gson:2.8.9'
+
     // hilt
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")

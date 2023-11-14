@@ -4,6 +4,9 @@ import android.content.Context
 import androidx.room.Room
 import com.example.startree.dao.DiseaseDao
 import com.example.startree.dao.ReportDao
+import com.example.startree.repository.DiseaseRepository
+import com.example.startree.repository.ReportRepository
+import com.example.startree.viewmodel.ReportViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,4 +30,14 @@ class MyModule {
 
     @Provides
     fun provideReportDao(db: AppDatabase): ReportDao = db.reportDao()
+
+    @Provides
+    fun provideInitializeDatabase(@ApplicationContext context: Context): InitializeDatabase {
+        return InitializeDatabase(context)
+    }
+
+    @Provides
+    fun provideReportViewModel(reportRepository: ReportRepository, diseaseRepository: DiseaseRepository): ReportViewModel {
+        return ReportViewModel(reportRepository, diseaseRepository)
+    }
 }

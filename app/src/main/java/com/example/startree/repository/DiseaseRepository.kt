@@ -6,8 +6,8 @@ import javax.inject.Inject
 
 class DiseaseRepository @Inject constructor(private val diseaseDao: DiseaseDao) {
 
-    fun getDiseaseById(diseaseId: Int): DiseaseEntity {
-        return diseaseDao.getDiseaseById(diseaseId)
+    fun getDiseaseByCode(diseaseId: Int): DiseaseEntity {
+        return diseaseDao.getDiseaseByCode(diseaseId)
     }
 
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.PlantClassificationActivity">
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:id="@+id/imvPlant"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:background="@color/lightgreen"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lay_disease"
+        android:layout_below="@+id/imvPlant">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_disease_name"
+            android:text="NAME"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_disease_explain"
+            android:text="EXPLAIN"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:layout_below="@+id/tv_disease_name"
+            android:layout_margin="5dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_disease_solution"
+            android:text="SOLUTION"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:layout_below="@+id/tv_disease_explain"
+            android:layout_margin="5dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lay_disease"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSaveReport"
+            android:text="결과 저장" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnGoToPlantsUpload"
+            android:text="다른 식물 진단"
+            android:layout_toRightOf="@+id/btnSaveReport" />
+    </RelativeLayout>
+
+</RelativeLayout>

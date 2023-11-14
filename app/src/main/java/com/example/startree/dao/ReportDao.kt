@@ -1,16 +1,17 @@
 package com.example.startree.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.startree.entity.ReportEntity
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ReportDao {
     @Query("SELECT * FROM report ORDER BY reportDate DESC")
-    fun getAll(): Flow<List<ReportEntity>>
+    fun getAllReports(): LiveData<List<ReportEntity>>
 
     @Query("SELECT * FROM report WHERE reportId = :reportId")
     fun getReportById(reportId: Int): ReportEntity
@@ -20,4 +21,10 @@ interface ReportDao {
 
     @Delete
     suspend fun deleteReport(reportEntity: ReportEntity)
+
+    @Update
+    suspend fun updateReport(reportEntity: ReportEntity)
+
+    @Query("DELETE FROM report WHERE reportId = :reportId")
+    suspend fun deleteReportById(reportId: Int)
 }
