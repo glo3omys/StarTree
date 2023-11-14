@@ -393,7 +393,7 @@ opt_func = torch.optim.Adam
 #                              weight_decay=1e-4,
 #                              opt_func=opt_func)
 
-# Save model
+# Save model (.pt)
 model_dir = '/content/drive/My Drive/Colab Notebooks/AI class/models/StarTree.pt'
 
 model.to('cpu')
@@ -401,6 +401,31 @@ model.eval()
 ex_input = torch.rand(1, *INPUT_SHAPE)
 traced_scr_mod = torch.jit.trace(model, ex_input)
 traced_scr_mod.save(model_dir)
+
+!pip install onnx
+!pip install onnx_tf
+
+# Save model (.tflite)
+import onnx
+from onnx_tf.backend import prepare
+import tensorflow as tf
+model.to('cpu')
+
+# Pytorch to ONNX
+temp_input = torch.rand(1, *INPUT_SHAPE)
+torch.onnx.export(model, temp_input, "StarTree.onnx", input_names=['input'], output_names=['output'])
+
+# ONNX to tensorflow
+onnx_mod = onnx.load('StarTree.onnx')
+tensorflow_rep = prepare(onnx_mod)
+tensorflow_rep.export_graph('StarTree.pb')
+
+# tensorflow to tflite
+conv = tf.lite.TFLiteConverter.from_saved_model('StarTree.pb')
+tflite_mod = conv.convert()
+
+with open('/content/drive/My Drive/Colab Notebooks/AI class/models/StarTree.tflite', 'wb') as f:
+  f.write(tflite_mod)
 
 """# Analyze"""
 
