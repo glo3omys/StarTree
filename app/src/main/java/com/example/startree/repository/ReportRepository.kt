@@ -1,24 +1,22 @@
 package com.example.startree.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.startree.dao.ReportDao
 import com.example.startree.entity.ReportEntity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class ReportRepository @Inject constructor(private val reportDao: ReportDao) {
     // val reports: MutableLiveData<List<ReportEntity>> = reportDao.getAllReports()
-     val reports: LiveData<List<ReportEntity>> = reportDao.getAllReports()
 
-    /*fun getAllReports(): MutableLiveData<ReportEntity> {
-        return reportDao.getAll() as MutableLiveData<ReportEntity>
-    }*/
+    //val reports: List<ReportEntity> = reportDao.getAllReports()
 
-    /*init {
-        viewModelScope.launch {
-            reports.postValue(reportDao.getAllReports())
-        }
-    }*/
+    fun getAllReports(): List<ReportEntity> {
+        return reportDao.getAllReports()
+    }
 
     fun getReportById(reportId: Int): ReportEntity {
         return reportDao.getReportById(reportId)

@@ -5,8 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import android.graphics.Color
 import com.example.startree.databinding.ActivityPlantUploadBinding
 import kotlin.random.Random
 
@@ -33,12 +35,20 @@ class PlantUploadActivity : AppCompatActivity() {
         }
 
         binding.btnGoToRecognition.setOnClickListener {
-            // *** CHECK ***
-            val nextIntent = Intent(this, PlantClassificationActivity::class.java)
-            nextIntent.putExtra("imageUri", selectedImageUri)
-            val diseaseCode = Random.nextInt(1, 7)
-            nextIntent.putExtra("diseaseCode", diseaseCode)
-            startActivity(nextIntent)
+            if (binding.imvPlant.drawable == null) {
+                Toast.makeText(this, "나뭇잎 사진을 올려주세요", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                val nextIntent = Intent(this, PlantClassificationActivity::class.java)
+                nextIntent.putExtra("imageUri", selectedImageUri)
+                val diseaseCode = Random.nextInt(1, 7)
+                nextIntent.putExtra("diseaseCode", diseaseCode)
+
+                startActivity(nextIntent)
+
+                /* *** CHECK*** */
+                finish()
+            }
         }
 
         selectImageLauncher = registerForActivityResult(
@@ -56,6 +66,7 @@ class PlantUploadActivity : AppCompatActivity() {
     private fun attachImageToImv(imageUri: Uri?) {
         if (imageUri != null) {
             binding.imvPlant.setImageURI(imageUri)
+            binding.imvPlant.setBackgroundColor(Color.TRANSPARENT)
         }
     }
 

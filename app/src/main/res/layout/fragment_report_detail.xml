@@ -4,14 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.PlantClassificationActivity">
+    android:layout_height="match_parent" >
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnBack"
-        android:text="뒤로가기" />
+        android:text="뒤로 가기" />
 
     <ImageView
         android:layout_width="350dp"
@@ -61,6 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lay_disease"
+        android:layout_marginTop="30dp"
         android:gravity="center">
 
         <Button

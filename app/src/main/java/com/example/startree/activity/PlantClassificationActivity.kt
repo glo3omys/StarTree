@@ -1,5 +1,7 @@
 package com.example.startree.activity
 
+import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,6 +25,7 @@ class PlantClassificationActivity : AppCompatActivity() {
 
     private var imageUri : Uri? = null
     private var diseaseCode : Int = -1
+    private var isSaved = false
 
     @Inject
     lateinit var diseaseDao: DiseaseDao
@@ -41,14 +44,20 @@ class PlantClassificationActivity : AppCompatActivity() {
         diseaseCode = intent.getIntExtra("diseaseCode", -1)
 
         binding.btnSaveReport.setOnClickListener {
-            if (imageUri != null) {
-                saveReport()
-                Toast.makeText(this, "SUCCESS: SAVE", Toast.LENGTH_SHORT).show()
-            }
+            if (isSaved)
+                Toast.makeText(this, "이미 저장되었습니다.", Toast.LENGTH_SHORT).show()
             else {
-                // Toast
-                Toast.makeText(this, "FAIL: SAVE", Toast.LENGTH_SHORT).show()
+                isSaved = true
+                saveReport()
+                Toast.makeText(this, "저장되었습니다.", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.btnGoToPlantsUpload.setOnClickListener {
+            val nextIntent = Intent(this, PlantUploadActivity::class.java)
+            startActivity(nextIntent)
+
+            finish()
         }
 
         makeReport()
@@ -71,6 +80,7 @@ class PlantClassificationActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main) {
                     if (disease != null) {
                         binding.imvPlant.setImageURI(imageUri)
+                        binding.imvPlant.setBackgroundColor(Color.TRANSPARENT)
                         binding.tvDiseaseName.text = disease.diseaseName
                         binding.tvDiseaseExplain.text = disease.diseaseExplain
                         binding.tvDiseaseSolution.text = disease.diseaseSolution

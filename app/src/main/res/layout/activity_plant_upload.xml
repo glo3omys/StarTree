@@ -14,13 +14,17 @@
         android:text="뒤로가기" />
 
     <ImageView
-        android:layout_width="350dp"
-        android:layout_height="350dp"
         android:id="@+id/imvPlant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/btnBack"
         android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
-        android:background="@color/lightgreen"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/leaf_placeholder" />
 
     <RelativeLayout
         android:layout_width="wrap_content"

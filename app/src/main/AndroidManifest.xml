@@ -32,7 +32,6 @@
         <activity android:name=".activity.PlantUploadActivity" />
         <activity android:name=".activity.ReportLookupActivity" />
         <activity android:name=".activity.PlantClassificationActivity" />
-        <activity android:name=".activity.ReportDetailActivity" />
     </application>
 
 </manifest>

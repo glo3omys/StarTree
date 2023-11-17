@@ -5,19 +5,49 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.PreferenceUtil
+import com.example.startree.InitializeDatabase
 import com.example.startree.R
+import com.example.startree.dao.DiseaseDao
+import com.example.startree.diseases
+import com.example.startree.entity.DiseaseEntity
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
+    @Inject
+    lateinit var initializeDatabase: InitializeDatabase
+
+    lateinit var prefs : PreferenceUtil
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        prefs = PreferenceUtil(applicationContext)
+
         requestPermission {
-            todo()
+            databaseCheck {
+                todo()
+            }
         }
+    }
+
+    private fun databaseCheck(done : () -> Unit) {
+        val initialized = prefs.getSharedPrefs("initialized", "false")
+        if (initialized == "false") {
+            CoroutineScope(Dispatchers.IO).launch {
+                initializeDatabase.parseAndInsertData()
+            }
+            prefs.setSharedPrefs("initialized", "true")
+        }
+        done()
     }
 
     private fun todo() {
