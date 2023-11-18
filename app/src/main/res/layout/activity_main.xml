@@ -16,12 +16,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnGoToUpload"
+            android:layout_margin="10dp"
             android:text="진단하기" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnGoToReportLookup"
+            android:layout_margin="10dp"
             android:text="진단내역"
             android:layout_below="@+id/btnGoToUpload" />
     </RelativeLayout>
@@ -30,6 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_test"
+        android:visibility="gone"
         android:text="test" />
 
 </RelativeLayout>

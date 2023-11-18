@@ -11,18 +11,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnBack"
-        android:text="뒤로가기" />
+        android:layout_margin="10dp"
+        android:textSize="16dp"
+        android:text="뒤로 가기" />
 
     <ImageView
         android:id="@+id/imvPlant"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:layout_below="@+id/btnBack"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_margin="20dp"
         android:adjustViewBounds="true"
         android:background="@drawable/leaf_placeholder" />
 
@@ -37,11 +36,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnSelectImage"
+            android:layout_margin="10dp"
             android:text="사진 선택" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnGoToRecognition"
+            android:layout_margin="10dp"
             android:text="사진 분석"
             android:layout_below="@+id/btnSelectImage" />
     </RelativeLayout>

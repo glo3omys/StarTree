@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.startree.MyDialog
 import com.example.startree.Report
 import com.example.startree.databinding.FragmentReportDetailBinding
 import com.example.startree.viewmodel.ReportViewModel
@@ -41,7 +42,6 @@ class ReportDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // reportId = arguments?.getInt("reportId", -1)
         report = arguments?.getParcelable("report")
 
         binding.btnBack.setOnClickListener {
@@ -68,14 +68,19 @@ class ReportDetailFragment : Fragment() {
     }
 
     private fun deleteReport() {
-        lifecycleScope.launch {
-            reportViewModel.deleteReportById(report?.reportId!!)
+        val mDialog = MyDialog(requireActivity())
+        mDialog.deleteReport { delete ->
+            if (delete) {
+                lifecycleScope.launch {
+                    reportViewModel.deleteReportById(report?.reportId!!)
 
-            requireActivity().supportFragmentManager
-                .beginTransaction()
-                .remove(this@ReportDetailFragment)
-                .commit()
-            requireActivity().supportFragmentManager.popBackStack()
+                    requireActivity().supportFragmentManager
+                        .beginTransaction()
+                        .remove(this@ReportDetailFragment)
+                        .commit()
+                    requireActivity().supportFragmentManager.popBackStack()
+                }
+            }
         }
     }
 }
