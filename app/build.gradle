@@ -22,6 +22,17 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        /*
+        // for TensorFlow Lite AAR
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }*/
+
+        // for TensorFlow Lite
+        aaptOptions {
+            noCompress "tflite"
+        }
     }
 
     buildTypes {
@@ -93,6 +104,13 @@ dependencies {
     // TedPermission
     // https://github.com/ParkSangGwon/TedPermission
     implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0'
+
+    implementation 'org.tensorflow:tensorflow-lite:+'
+    /*implementation 'org.tensorflow:tensorflow-lite-task-vision:0.3.0'
+    implementation 'org.tensorflow:tensorflow-lite-task-text:0.3.0'
+    implementation 'org.tensorflow:tensorflow-lite-task-audio:0.3.0'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.3.0'
+    implementation 'org.tensorflow:tensorflow-lite:0.0.0-nightly-SNAPSHOT'*/
 }
 
 kapt {

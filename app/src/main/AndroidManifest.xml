@@ -22,9 +22,10 @@
             android:exported="false" />
         <activity
             android:name=".activity.SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,6 +33,7 @@
         <activity android:name=".activity.PlantUploadActivity" />
         <activity android:name=".activity.ReportLookupActivity" />
         <activity android:name=".activity.PlantClassificationActivity" />
+        <activity android:name=".activity.PlantRecognitionActivity" />
     </application>
 
 </manifest>
