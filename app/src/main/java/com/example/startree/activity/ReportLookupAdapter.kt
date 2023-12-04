@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.startree.R
 import com.example.startree.Report
 import com.example.startree.diseases
-import com.example.startree.entity.DiseaseEntity
 import com.example.startree.entity.ReportEntity
 import com.example.startree.getDateFromLong
 
@@ -18,7 +17,6 @@ class ReportLookupAdapter(
     private val clicked: (Report) -> Unit)
     : RecyclerView.Adapter<ReportLookupAdapter.ViewHolder>()
 {
-    // var reports = mutableListOf<ReportEntity>()
     var reports = mutableListOf<Report>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,10 +24,8 @@ class ReportLookupAdapter(
         return ViewHolder(view)
     }
 
-    // override fun getItemCount(): Int = reports.size
     override fun getItemCount(): Int = reports.size
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        // holder.bind(reports[position], position)
         holder.bind(reports[position], position)
     }
 
@@ -58,7 +54,6 @@ class ReportLookupAdapter(
 
     fun updateReports(updatedReports: List<ReportEntity>) {
         reports = combineReport(updatedReports) as MutableList<Report>
-        // reports = updatedReports as MutableList<ReportEntity>
         notifyDataSetChanged()
     }
 }

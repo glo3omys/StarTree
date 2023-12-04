@@ -9,9 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.PreferenceUtil
 import com.example.startree.InitializeDatabase
 import com.example.startree.R
-import com.example.startree.dao.DiseaseDao
-import com.example.startree.diseases
-import com.example.startree.entity.DiseaseEntity
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
 import dagger.hilt.android.AndroidEntryPoint
@@ -58,7 +55,6 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun requestPermission(logic : () -> Unit) {
-        // Build.VERSION_CODES.R corresponds to Android 11
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.R) {
             TedPermission.create()
                 .setPermissionListener(object : PermissionListener {

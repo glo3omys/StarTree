@@ -44,11 +44,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(nextIntent)
         }
 
-        binding.btnTest.setOnClickListener {
-            val nextIntent = Intent(this, TestActivity::class.java)
-            startActivity(nextIntent)
-        }
-
         loadDiseases()
     }
 

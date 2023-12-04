@@ -26,7 +26,6 @@ class ReportDetailFragment : Fragment() {
 
     private val reportViewModel: ReportViewModel by activityViewModels()
 
-    // private var reportId : Int? = null
     private var report: Report? = null
 
     override fun onCreateView(

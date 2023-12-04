@@ -30,9 +30,6 @@ class PlantClassificationActivity : AppCompatActivity() {
     @Inject
     lateinit var diseaseDao: DiseaseDao
 
-    /*@Inject
-    lateinit var reportDao: ReportDao*/
-
     private val reportViewModel: ReportViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +69,6 @@ class PlantClassificationActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             try {
-                // disease = loadDisease(diseaseId)
                 val disease = withContext(Dispatchers.IO) {
                     diseaseDao.getDiseaseByCode(diseaseCode)
                 }

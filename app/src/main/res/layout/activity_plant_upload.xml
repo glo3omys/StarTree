@@ -45,15 +45,6 @@
             android:layout_margin="10dp"
             android:text="사진 분석"
             android:layout_below="@+id/btnSelectImage" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnModelTest"
-            android:layout_margin="10dp"
-            android:text="Model Test"
-            android:visibility="gone"
-            android:layout_below="@+id/btnGoToRecognition" />
     </RelativeLayout>
 
 </RelativeLayout>
