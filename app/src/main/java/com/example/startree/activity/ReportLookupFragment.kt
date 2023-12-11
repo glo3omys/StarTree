@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.startree.R
 import com.example.startree.databinding.FragmentReportLookupBinding
 import com.example.startree.viewmodel.ReportViewModel
@@ -57,6 +59,7 @@ class ReportLookupFragment : Fragment() {
             }
         }
 
+        binding.rvReportsList.apply { addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL)) }
         binding.rvReportsList.adapter = reportLookupAdapter
 
         binding.btnBack.setOnClickListener {

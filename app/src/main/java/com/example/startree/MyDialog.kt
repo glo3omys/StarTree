@@ -18,7 +18,8 @@ class MyDialog(context: Context) {
         mDialogView = LayoutInflater.from(mContext).inflate(R.layout.dialog_delete, null)
 
         mBuilder.setView(mDialogView)
-            .setTitle("confirm")
+            //.setTitle("confirm")
+            //.setTitle(" ")
             .setCancelable(false)
         mAlertDialog = mBuilder.create()
         mAlertDialog.show()

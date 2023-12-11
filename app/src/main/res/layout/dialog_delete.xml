@@ -7,8 +7,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/custom_dialog_tv"
-        android:text="지우기?"
+        android:text="진단 결과를 삭제하시겠습니까?"
         android:textSize="20dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"/>
 
     <RelativeLayout
@@ -16,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/custom_dialog_tv"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center">
 
         <Button
@@ -23,7 +25,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/custom_dialog_btn_cancel"
             android:layout_margin="10dp"
-            android:text="취소" />
+            android:text="아니오" />
 
         <Button
             android:layout_width="wrap_content"
@@ -31,7 +33,7 @@
             android:id="@+id/custom_dialog_btn_ok"
             android:layout_toRightOf="@id/custom_dialog_btn_cancel"
             android:layout_margin="10dp"
-            android:text="삭제" />
+            android:text="네" />
     </RelativeLayout>
 
 
