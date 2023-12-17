@@ -37,8 +37,8 @@ class PlantClassificationActivity : AppCompatActivity() {
         mBinding = ActivityPlantClassificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        imageUri = intent.getParcelableExtra("imageUri")
-        diseaseCode = intent.getIntExtra("diseaseCode", -1)
+        imageUri = intent.getParcelableExtra("imageUri") // get the imageUri from previous activity(PlantUploadActivity)
+        diseaseCode = intent.getIntExtra("diseaseCode", -1) // get the diseaseCode from previous activity(PlantUploadActivity)
 
         binding.btnSaveReport.setOnClickListener {
             if (isSaved)
@@ -51,6 +51,7 @@ class PlantClassificationActivity : AppCompatActivity() {
         }
 
         binding.btnGoToPlantsUpload.setOnClickListener {
+            // start PlantUploadActivity
             val nextIntent = Intent(this, PlantUploadActivity::class.java)
             startActivity(nextIntent)
 
@@ -61,12 +62,12 @@ class PlantClassificationActivity : AppCompatActivity() {
     }
 
     private fun saveReport() {
+        // save report to database through reportViewModel
         val report = ReportEntity(diseaseCode = diseaseCode, imageUri = imageUri.toString())
         reportViewModel.insertReport(report)
     }
 
     private fun makeReport() {
-
         lifecycleScope.launch {
             try {
                 val disease = withContext(Dispatchers.IO) {
@@ -75,6 +76,7 @@ class PlantClassificationActivity : AppCompatActivity() {
 
                 withContext(Dispatchers.Main) {
                     if (disease != null) {
+                        // set ImageView and TextViews with data
                         binding.imvPlant.setImageURI(imageUri)
                         binding.imvPlant.setBackgroundColor(Color.TRANSPARENT)
                         binding.tvDiseaseName.text = disease.diseaseName

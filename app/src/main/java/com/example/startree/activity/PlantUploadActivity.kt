@@ -47,15 +47,17 @@ class PlantUploadActivity : AppCompatActivity() {
             openGallery()
         }
 
-        binding.btnGoToRecognition.setOnClickListener {
+        binding.btnPlantDiseaseDetection.setOnClickListener {
             if (binding.imvPlant.drawable == null) {
                 Toast.makeText(this, "나뭇잎 사진을 올려주세요", Toast.LENGTH_SHORT).show()
             } else {
+                // if an image is selected
+                // start loadingDialog to indicate that the processing is in progress
                 val loadingDialog = LoadingDialog(this@PlantUploadActivity)
                 loadingDialog.show()
 
                 GlobalScope.launch {
-                    newTodo()
+                    callApiForPrediction()
 
                     runOnUiThread {
                         loadingDialog.dismiss()
@@ -76,9 +78,10 @@ class PlantUploadActivity : AppCompatActivity() {
         }
     }
 
-    private fun newTodo() {
+    private fun callApiForPrediction() {
         val apiServiceGenerator = ApiServiceGenerator()
 
+        // create a MultipartBody.Part using the client's image to communicate with FastAPI
         val multipartFile: MultipartBody.Part? = if (selectedImageUri != null) {
             val path = getAbsolutePath(selectedImageUri, this)
             val file = File(path)
@@ -100,6 +103,7 @@ class PlantUploadActivity : AppCompatActivity() {
                         val resultJsonString = response.body()!!.string()
                         val outputs = JSONObject(resultJsonString).getJSONArray("predictions")
 
+                        // get diseaseCode based on the index of the maximum float value returned by the server
                         var maxValue = outputs.getDouble(0)
                         var diseaseCode = 0
                         for (i in 1 until outputs.length()) {
@@ -109,8 +113,9 @@ class PlantUploadActivity : AppCompatActivity() {
                                 diseaseCode = i
                             }
                         }
-                        diseaseCode += 1
+                        diseaseCode += 1 // increment 'diseaseCode' by 1, as indices start from 0 while disease codes start from 1.
 
+                        // start PlantClassificationActivity
                         val nextIntent = Intent(
                             this@PlantUploadActivity,
                             PlantClassificationActivity::class.java
@@ -141,6 +146,7 @@ class PlantUploadActivity : AppCompatActivity() {
         }
     }
 
+    // converts the image URI obtained through the ActivityResultLauncher<Intent> to its absolute file path
     private fun getAbsolutePath(path: Uri?, context: Context): String {
         val proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
         val c: Cursor? = context.contentResolver.query(path!!, proj, null, null, null)

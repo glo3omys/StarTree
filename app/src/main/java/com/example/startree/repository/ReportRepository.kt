@@ -1,19 +1,10 @@
 package com.example.startree.repository
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.startree.dao.ReportDao
 import com.example.startree.entity.ReportEntity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class ReportRepository @Inject constructor(private val reportDao: ReportDao) {
-    // val reports: MutableLiveData<List<ReportEntity>> = reportDao.getAllReports()
-
-    //val reports: List<ReportEntity> = reportDao.getAllReports()
-
     fun getAllReports(): List<ReportEntity> {
         return reportDao.getAllReports()
     }
@@ -22,11 +13,8 @@ class ReportRepository @Inject constructor(private val reportDao: ReportDao) {
         return reportDao.getReportById(reportId)
     }
 
-    /*fun deleteReportById(reportId: Int) {
-        reportDao.delete(reportId)
-    }*/
-    suspend fun deleteReport(report: ReportEntity) {
-        reportDao.deleteReport(report)
+    suspend fun deleteReportById(id: Int) {
+        reportDao.deleteReportById(id)
     }
 
     suspend fun insertReport(report: ReportEntity) {
@@ -37,7 +25,5 @@ class ReportRepository @Inject constructor(private val reportDao: ReportDao) {
         reportDao.updateReport(report)
     }
 
-    suspend fun deleteReportById(id: Int) {
-        reportDao.deleteReportById(id)
-    }
+
 }

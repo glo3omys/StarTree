@@ -12,8 +12,8 @@ class InitializeDatabase(private val context: Context) {
 
     fun parseAndInsertData() {
         val diseaseDao = appDatabase.diseaseDao()
-        val rawResourceId = R.raw.diseasesjson
-        val inputStream = context.resources.openRawResource(rawResourceId)
+        val dbFilePath = R.raw.diseasesjson
+        val inputStream = context.resources.openRawResource(dbFilePath)
         val jsonString = inputStream.bufferedReader().use { it.readText() }
 
         val gson = Gson()

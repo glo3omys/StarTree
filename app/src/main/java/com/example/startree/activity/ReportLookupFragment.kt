@@ -68,7 +68,6 @@ class ReportLookupFragment : Fragment() {
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                // Handle back button press
                 requireActivity().finish()
             }
         })

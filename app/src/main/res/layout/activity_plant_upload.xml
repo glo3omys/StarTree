@@ -41,7 +41,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnGoToRecognition"
+            android:id="@+id/btnPlantDiseaseDetection"
             android:layout_margin="10dp"
             android:text="사진 분석"
             android:layout_below="@+id/btnSelectImage" />

@@ -9,8 +9,6 @@ import retrofit2.http.POST
 import retrofit2.http.Part
 import java.io.File
 
-//data class PredictionResponse(val prediction: List<Double>)
-
 interface ApiService {
     @Multipart
     @POST("/predict")

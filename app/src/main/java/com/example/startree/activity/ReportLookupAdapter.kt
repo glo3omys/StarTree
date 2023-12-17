@@ -45,6 +45,7 @@ class ReportLookupAdapter(
         }
     }
 
+    // Combine 'reportEntity' and 'diseaseEntity' into the 'Report' class
     private fun combineReport(reports: List<ReportEntity>): List<Report> {
         return reports.map { report ->
             val diseaseData = diseases.find { it.diseaseCode == report.diseaseCode } !!

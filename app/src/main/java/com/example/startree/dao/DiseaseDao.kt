@@ -17,9 +17,6 @@ interface DiseaseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(data: List<DiseaseEntity>)
 
-    /*@Insert
-    fun insertAll(vararg users: User)*/
-
     /*@Delete
     suspend fun deleteDisease(diseaseEntity: DiseaseEntity)*/
 }

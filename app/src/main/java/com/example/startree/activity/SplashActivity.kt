@@ -6,7 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.PreferenceUtil
+import com.example.startree.PreferenceUtil
 import com.example.startree.InitializeDatabase
 import com.example.startree.R
 import com.gun0912.tedpermission.PermissionListener
@@ -32,11 +32,12 @@ class SplashActivity : AppCompatActivity() {
 
         requestPermission {
             databaseCheck {
-                todo()
+                startHomeActivity()
             }
         }
     }
 
+    // initialize database if it is not already initialized
     private fun databaseCheck(done : () -> Unit) {
         val initialized = prefs.getSharedPrefs("initialized", "false")
         if (initialized == "false") {
@@ -48,8 +49,8 @@ class SplashActivity : AppCompatActivity() {
         done()
     }
 
-    private fun todo() {
-        val nextIntent = Intent(this, MainActivity::class.java)
+    private fun startHomeActivity() {
+        val nextIntent = Intent(this, HomeActivity::class.java)
         startActivity(nextIntent)
         finish()
     }

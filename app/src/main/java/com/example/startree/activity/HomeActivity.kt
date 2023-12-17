@@ -3,10 +3,10 @@ package com.example.startree.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.myapplication.PreferenceUtil
+import com.example.startree.PreferenceUtil
 import com.example.startree.InitializeDatabase
 import com.example.startree.dao.DiseaseDao
-import com.example.startree.databinding.ActivityMainBinding
+import com.example.startree.databinding.ActivityHomeBinding
 import com.example.startree.diseases
 import com.example.startree.entity.DiseaseEntity
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,8 +16,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
-    private var mBinding: ActivityMainBinding? = null
+class HomeActivity : AppCompatActivity() {
+    private var mBinding: ActivityHomeBinding? = null
     private val binding get() = mBinding!!
     lateinit var prefs : PreferenceUtil
 
@@ -29,17 +29,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = ActivityMainBinding.inflate(layoutInflater)
+        mBinding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         prefs = PreferenceUtil(applicationContext)
 
         binding.btnGoToUpload.setOnClickListener {
+            // start PlantUploadActivity
             val nextIntent = Intent(this, PlantUploadActivity::class.java)
             startActivity(nextIntent)
         }
 
         binding.btnGoToReportLookup.setOnClickListener {
+            // start ReportLookupActivity
             val nextIntent = Intent(this, ReportLookupActivity::class.java)
             startActivity(nextIntent)
         }
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         loadDiseases()
     }
 
+    // load all diseases from database through DAO
     private fun loadDiseases() {
         CoroutineScope(Dispatchers.IO).launch {
             diseases = diseaseDao.getAllDiseases() as MutableList<DiseaseEntity>
