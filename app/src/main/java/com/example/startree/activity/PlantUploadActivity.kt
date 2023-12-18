@@ -103,7 +103,8 @@ class PlantUploadActivity : AppCompatActivity() {
                         val resultJsonString = response.body()!!.string()
                         val outputs = JSONObject(resultJsonString).getJSONArray("predictions")
 
-                        // get diseaseCode based on the index of the maximum float value returned by the server
+                        // get diseaseCode
+                        // based on the index of the maximum float value returned by the server
                         var maxValue = outputs.getDouble(0)
                         var diseaseCode = 0
                         for (i in 1 until outputs.length()) {
@@ -113,7 +114,9 @@ class PlantUploadActivity : AppCompatActivity() {
                                 diseaseCode = i
                             }
                         }
-                        diseaseCode += 1 // increment 'diseaseCode' by 1, as indices start from 0 while disease codes start from 1.
+                        // increment 'diseaseCode' by 1,
+                        // as indices start from 0 while disease codes start from 1
+                        diseaseCode += 1
 
                         // start PlantClassificationActivity
                         val nextIntent = Intent(
