@@ -32,7 +32,7 @@ class SplashActivity : AppCompatActivity() {
 
         requestPermission {
             databaseCheck {
-                startHomeActivity()
+                startMainActivity()
             }
         }
     }
@@ -49,8 +49,8 @@ class SplashActivity : AppCompatActivity() {
         done()
     }
 
-    private fun startHomeActivity() {
-        val nextIntent = Intent(this, HomeActivity::class.java)
+    private fun startMainActivity() {
+        val nextIntent = Intent(this, MainActivity::class.java)
         startActivity(nextIntent)
         finish()
     }

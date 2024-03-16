@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.example.startree.PreferenceUtil
 import com.example.startree.InitializeDatabase
 import com.example.startree.dao.DiseaseDao
-import com.example.startree.databinding.ActivityHomeBinding
+import com.example.startree.databinding.ActivityMainBinding
 import com.example.startree.diseases
 import com.example.startree.entity.DiseaseEntity
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,8 +16,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeActivity : AppCompatActivity() {
-    private var mBinding: ActivityHomeBinding? = null
+class MainActivity : AppCompatActivity() {
+    private var mBinding: ActivityMainBinding? = null
     private val binding get() = mBinding!!
     lateinit var prefs : PreferenceUtil
 
@@ -29,7 +29,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = ActivityHomeBinding.inflate(layoutInflater)
+        mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         prefs = PreferenceUtil(applicationContext)
