@@ -48,6 +48,14 @@ DB : SQLite
 ![star_tree_2](https://github.com/glo3omys/StarTree/assets/36217363/a52fc07a-d80d-40b7-b556-3164452fc0d1)
 
 
+## 향후 추가할 기능
+
+- SNS 계정 연동: 카카오톡, 구글 등의 계정을 이용해 로그인을 할 수 있습니다.
+- 식물별로 진단 내역 관리: 여러 식물을 키우는 사용자의 경우, 식물을 각각 관리할 수 있도록 합니다.
+- 사용자 게시판 및 커뮤니티: 사용자들이 소통할 수 있는 페이지 입니다.
+- 코루틴: 서버 통신 및 비동기 작업 등에 적용합니다.
+
+
 ## 참고 자료
 
 - bioadvanced, “Signs of Disease in Common Houseplants”, https://bioadvanced.com/signs-common-houseplant-diseases, 2023.09.23	
