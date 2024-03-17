@@ -27,7 +27,7 @@ Star Tree는 식물의 건강 상태를 파악하고, 질병을 진단하고 해
 - 개발 언어 : Python, Kotlin
 - 사용한 라이브러리 (Python) : PyTorch, PIL, FastAPI, os, shutil, cv2, albumentations, pandas, torch, torchvision, torchsummary
 - 사용한 라이브러리 (Kotlin) : Gson, Dagger Hilt, Room Database, TedPermission, Retrofit
-DB : SQLite
+- DB : SQLite
 
 
 ## 시스템 구조
